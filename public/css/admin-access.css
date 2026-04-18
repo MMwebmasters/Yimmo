@@ -1,0 +1,18 @@
+/* Style pour le lien admin discret */
+.admin-link {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 0.8rem;
+  color: rgba(212, 175, 55, 0.3);
+  cursor: pointer;
+  font-weight: 700;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.admin-link:hover {
+  color: rgba(212, 175, 55, 0.8);
+}

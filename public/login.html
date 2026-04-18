@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yimmo - Connexion Admin</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-container {
+      background: white;
+      padding: 3rem;
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      max-width: 400px;
+      width: 90%;
+    }
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .login-header h1 {
+      font-size: 2rem;
+      color: #1a1a1a;
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+
+    .login-header .tagline {
+      font-size: 0.9rem;
+      color: #d4af37;
+      font-style: italic;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #d4af37;
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    }
+
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #d4af37;
+      color: #1a1a1a;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #c9a227;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .error {
+      color: #f44336;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      display: none;
+    }
+
+    .error.show {
+      display: block;
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    .back-link a {
+      color: #d4af37;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .back-link a:hover {
+      color: #1a1a1a;
+    }
+
+    .loading {
+      display: none;
+      text-align: center;
+      color: #999;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-header">
+      <h1>Yimmo</h1>
+      <p class="tagline">Connexion Admin</p>
+    </div>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required placeholder="Yousri@yimmosarl.com">
+        <div class="error" id="emailError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" name="password" required placeholder="Votre mot de passe">
+        <div class="error" id="passwordError"></div>
+      </div>
+
+      <button type="submit">Se Connecter</button>
+
+      <div id="loginError" class="error"></div>
+      <div class="loading" id="loading">Connexion en cours...</div>
+    </form>
+
+    <div class="back-link">
+      <a href="/">← Retour au site</a>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const loginError = document.getElementById('loginError');
+    const loading = document.getElementById('loading');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = emailInput.value.trim();
+      const password = passwordInput.value;
+
+      // Validation
+      if (!email || !password) {
+        showError('Veuillez remplir tous les champs');
+        return;
+      }
+
+      // Afficher le loader
+      loading.style.display = 'block';
+      loginError.classList.remove('show');
+
+      try {
+        const response = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          // Sauvegarde du token
+          localStorage.setItem('adminToken', result.token);
+
+          // Redirection vers admin
+          window.location.href = '/admin';
+        } else {
+          showError(result.error || 'Identifiants invalides');
+          loading.style.display = 'none';
+        }
+      } catch (error) {
+        console.error('Erreur:', error);
+        showError('Erreur de connexion. Vérifiez que le serveur est actif.');
+        loading.style.display = 'none';
+      }
+    });
+
+    function showError(message) {
+      loginError.textContent = '❌ ' + message;
+      loginError.classList.add('show');
+    }
+  </script>
+</body>
+</html>

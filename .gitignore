@@ -1,0 +1,11 @@
+node_modules/
+.env
+.env.local
+.DS_Store
+*.log
+uploads/
+database.db
+dist/
+.vscode/
+.claude/
+Photo site web/
