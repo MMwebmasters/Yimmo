@@ -317,43 +317,102 @@
         </div>
         <div class="settings-form">
           <form id="settingsForm">
+
+            <!-- Informations générales -->
             <div class="settings-group">
-              <div class="settings-group-title">Informations de contact</div>
+              <div class="settings-group-title">Informations générales</div>
               <div class="form-row">
                 <div class="form-group">
-                  <label for="setting-company-name">Nom de l'entreprise</label>
-                  <input type="text" id="setting-company-name" data-key="company_name">
+                  <label>Nom de l'entreprise</label>
+                  <input type="text" data-key="company_name" placeholder="Yimmo">
                 </div>
                 <div class="form-group">
-                  <label for="setting-tagline">Slogan</label>
-                  <input type="text" id="setting-tagline" data-key="tagline">
+                  <label>Slogan (footer)</label>
+                  <input type="text" data-key="tagline" placeholder="Yimmo le bras droit des propriétaires">
                 </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="setting-phone">Téléphone</label>
-                  <input type="tel" id="setting-phone" data-key="phone">
-                </div>
-                <div class="form-group">
-                  <label for="setting-email">Email</label>
-                  <input type="email" id="setting-email" data-key="email">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="setting-address">Adresse</label>
-                <input type="text" id="setting-address" data-key="address">
               </div>
             </div>
 
+            <!-- Hero -->
             <div class="settings-group">
-              <div class="settings-group-title">Textes du site</div>
+              <div class="settings-group-title">Section d'accueil (Hero)</div>
               <div class="form-group">
-                <label for="setting-about">Texte "À propos"</label>
-                <textarea id="setting-about" data-key="about_text" rows="5" placeholder="Présentez votre entreprise..."></textarea>
+                <label>Étiquette au-dessus du titre</label>
+                <input type="text" data-key="hero_label" placeholder="Menuiserie Premium · Genève">
               </div>
               <div class="form-group">
-                <label for="setting-services">Texte "Services"</label>
-                <textarea id="setting-services" data-key="services_text" rows="4" placeholder="Décrivez vos services..."></textarea>
+                <label>Sous-titre</label>
+                <textarea data-key="hero_subtitle" rows="2" placeholder="Spécialisés dans les portes EI30..."></textarea>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Stat 1 — Chiffre</label>
+                  <input type="text" data-key="stat1_number" placeholder="5+">
+                </div>
+                <div class="form-group">
+                  <label>Stat 1 — Libellé</label>
+                  <input type="text" data-key="stat1_label" placeholder="Ans d'expérience">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Stat 2 — Chiffre</label>
+                  <input type="text" data-key="stat2_number" placeholder="200+">
+                </div>
+                <div class="form-group">
+                  <label>Stat 2 — Libellé</label>
+                  <input type="text" data-key="stat2_label" placeholder="Projets réalisés">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Stat 3 — Chiffre</label>
+                  <input type="text" data-key="stat3_number" placeholder="100%">
+                </div>
+                <div class="form-group">
+                  <label>Stat 3 — Libellé</label>
+                  <input type="text" data-key="stat3_label" placeholder="Satisfaction client">
+                </div>
+              </div>
+            </div>
+
+            <!-- À propos -->
+            <div class="settings-group">
+              <div class="settings-group-title">Section À propos</div>
+              <div class="form-group">
+                <label>Texte de présentation</label>
+                <p class="form-hint">Chaque ligne sera un paragraphe séparé sur le site.</p>
+                <textarea data-key="about_text" rows="8" placeholder="Décrivez votre entreprise..."></textarea>
+              </div>
+            </div>
+
+            <!-- Contact & Réseaux -->
+            <div class="settings-group">
+              <div class="settings-group-title">Contact & Réseaux sociaux</div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Téléphone</label>
+                  <input type="tel" data-key="phone" placeholder="+41 78 243 03 94">
+                </div>
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" data-key="email" placeholder="Yousri@yimmosarl.com">
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Adresse</label>
+                <input type="text" data-key="address" placeholder="Rue de Genève 67">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Numéro WhatsApp</label>
+                  <p class="form-hint">Format international sans + ni espaces (ex: 41782430394)</p>
+                  <input type="text" data-key="whatsapp" placeholder="41782430394">
+                </div>
+                <div class="form-group">
+                  <label>URL Instagram</label>
+                  <input type="url" data-key="instagram" placeholder="https://www.instagram.com/yimmosarl">
+                </div>
               </div>
             </div>
 

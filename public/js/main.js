@@ -466,13 +466,57 @@ async function submitForm(form, type) {
 async function loadSiteSettings() {
   try {
     const response = await fetch(`${API_URL}/settings`);
-    const settings = await response.json();
+    const s = await response.json();
 
-    // Appliquer les paramètres au DOM si nécessaire
-    console.log('Site settings loaded:', settings);
+    setText('heroLabel',    s.hero_label);
+    setText('heroSubtitle', s.hero_subtitle);
+    setText('stat1Num',     s.stat1_number);
+    setText('stat1Label',   s.stat1_label);
+    setText('stat2Num',     s.stat2_number);
+    setText('stat2Label',   s.stat2_label);
+    setText('stat3Num',     s.stat3_number);
+    setText('stat3Label',   s.stat3_label);
+
+    // À propos — chaque ligne devient un <p>
+    if (s.about_text) {
+      const el = document.getElementById('aboutText');
+      if (el) el.innerHTML = s.about_text.split('\n').filter(l => l.trim()).map(l => `<p>${l}</p>`).join('');
+    }
+
+    // Contact
+    if (s.phone) {
+      const el = document.getElementById('contactPhone');
+      if (el) { el.textContent = s.phone; el.href = `tel:${s.phone.replace(/\s/g, '')}`; }
+    }
+    if (s.email) {
+      const el = document.getElementById('contactEmail');
+      if (el) { el.textContent = s.email; el.href = `mailto:${s.email}`; }
+    }
+    if (s.whatsapp) {
+      const num = s.whatsapp.replace(/[^0-9]/g, '');
+      const waUrl = `https://wa.me/${num}?text=Bonjour%20Yimmo%21%20Je%20souhaite%20obtenir%20plus%20d%27informations.`;
+      setHref('whatsappBtn',     waUrl);
+      setHref('whatsappContact', waUrl);
+      setHref('whatsappFooter',  waUrl);
+    }
+    if (s.instagram) {
+      setHref('instagramFooter', s.instagram);
+    }
   } catch (error) {
     console.error('Erreur chargement paramètres:', error);
   }
+}
+
+function setText(id, val) {
+  if (!val) return;
+  const el = document.getElementById(id);
+  if (el) el.textContent = val;
+}
+
+function setHref(id, href) {
+  if (!href) return;
+  const el = document.getElementById(id);
+  if (el) el.href = href;
 }
 
 // ============================================

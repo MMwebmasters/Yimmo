@@ -112,13 +112,23 @@ const createTables = () => {
 
 const insertDefaultSettings = () => {
   const defaults = {
-    company_name: 'Yimmo',
-    tagline: 'Yimmo le bras droit des propriétaires',
-    address: 'Rue de Genève 67',
-    phone: '+41 78 243 03 94',
-    email: 'Yousri@yimmosarl.com',
-    about_text: 'Texte à remplir via l\'admin',
-    services_text: 'Texte à remplir via l\'admin'
+    company_name:  'Yimmo',
+    tagline:       'Yimmo le bras droit des propriétaires',
+    address:       'Rue de Genève 67',
+    phone:         '+41 78 243 03 94',
+    email:         'Yousri@yimmosarl.com',
+    whatsapp:      '41782430394',
+    instagram:     'https://www.instagram.com/yimmosarl',
+    hero_label:    'Menuiserie Premium · Genève',
+    hero_subtitle: "Spécialisés dans les portes EI30 et les cuisines haut de gamme. Chaque projet est une signature, chaque réalisation une fierté.",
+    stat1_number:  '5+',
+    stat1_label:   "Ans d'expérience",
+    stat2_number:  '200+',
+    stat2_label:   'Projets réalisés',
+    stat3_number:  '100%',
+    stat3_label:   'Satisfaction client',
+    about_text:    "Depuis plusieurs années, Yimmo accompagne les propriétaires dans leurs projets de menuiserie. Notre expertise se concentre sur deux domaines clés : les portes EI30 (portes coupe-feu de haute qualité) et les cuisines sur-mesure.\nChaque projet est traité avec rigueur et professionnalisme. Nous comprenons vos besoins, respectons vos délais, et livrons des solutions qui dépassent vos attentes.\nNotre philosophie : être le bras droit des propriétaires en leur proposant des menuiseries de qualité exceptionnelle, avec un service client irréprochable.",
+    services_text: ''
   };
 
   for (const [key, value] of Object.entries(defaults)) {
