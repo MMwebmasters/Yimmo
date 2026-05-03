@@ -468,6 +468,11 @@ async function loadSiteSettings() {
     const response = await fetch(`${API_URL}/settings`);
     const s = await response.json();
 
+    if (s.company_name) {
+      setText('siteLogo',   s.company_name);
+      setText('footerName', s.company_name);
+      document.title = s.company_name + (s.tagline ? ' — ' + s.tagline : '');
+    }
     setText('heroLabel',    s.hero_label);
     setText('heroSubtitle', s.hero_subtitle);
     setText('stat1Num',     s.stat1_number);
