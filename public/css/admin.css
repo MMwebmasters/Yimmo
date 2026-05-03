@@ -962,7 +962,7 @@ body {
    ============================================ */
 
 .settings-form {
-  max-width: 720px;
+  max-width: 860px;
 }
 
 .settings-group {
@@ -974,8 +974,8 @@ body {
 }
 
 .settings-group-title {
-  padding: 1rem 1.5rem;
-  font-size: 0.8rem;
+  padding: 0.9rem 1.5rem;
+  font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -990,9 +990,47 @@ body {
   margin-bottom: 0;
 }
 
-.settings-group .form-row { padding: 0 1.5rem; }
-.settings-group .form-group:first-of-type { padding-top: 1.25rem; }
+.settings-group .form-row {
+  padding: 0 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.settings-group .form-group { padding-top: 1rem; }
 .settings-group .form-group:last-of-type { padding-bottom: 1.25rem; }
+.settings-group .form-row + .form-row { padding-top: 0; }
+.settings-group .form-row .form-group { padding: 0; }
+.settings-group > .form-row { padding-top: 1rem; padding-bottom: 1.25rem; gap: 1rem; }
+
+.settings-group input,
+.settings-group textarea,
+.settings-group select {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.6rem 0.85rem;
+  font-size: 0.88rem;
+  font-family: inherit;
+  color: var(--text);
+  transition: border-color 0.2s;
+  resize: vertical;
+}
+
+.settings-group input:focus,
+.settings-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.settings-group label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 0.35rem;
+}
 
 /* ============================================
    CALENDAR
