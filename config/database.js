@@ -128,7 +128,16 @@ const insertDefaultSettings = () => {
     stat3_number:  '100%',
     stat3_label:   'Satisfaction client',
     about_text:    "Depuis plusieurs années, Yimmo accompagne les propriétaires dans leurs projets de menuiserie. Notre expertise se concentre sur deux domaines clés : les portes EI30 (portes coupe-feu de haute qualité) et les cuisines sur-mesure.\nChaque projet est traité avec rigueur et professionnalisme. Nous comprenons vos besoins, respectons vos délais, et livrons des solutions qui dépassent vos attentes.\nNotre philosophie : être le bras droit des propriétaires en leur proposant des menuiseries de qualité exceptionnelle, avec un service client irréprochable.",
-    services_text: ''
+    services_text: '',
+    s1_title: 'Portes EI30',
+    s1_desc:  'Portes coupe-feu certifiées EI30 de haute qualité. Sécurité optimale, design moderne et installation professionnelle.',
+    s1_f1: 'Certification coupe-feu EI30', s1_f2: 'Design contemporain', s1_f3: 'Pose clé en main',
+    s2_title: 'Cuisines Haut de Gamme',
+    s2_desc:  'Cuisines sur-mesure combinant fonctionnalité et design. Matériaux premium et finitions impeccables.',
+    s2_f1: 'Conception personnalisée', s2_f2: 'Matériaux haut de gamme', s2_f3: 'Finitions soignées',
+    s3_title: 'Réalisations Complètes',
+    s3_desc:  "Du projet initial à la pose finale, nous gérons l'intégralité de vos chantiers menuiserie avec professionnalisme.",
+    s3_f1: 'Suivi de chantier', s3_f2: 'Respect des délais', s3_f3: 'Devis gratuit'
   };
 
   for (const [key, value] of Object.entries(defaults)) {

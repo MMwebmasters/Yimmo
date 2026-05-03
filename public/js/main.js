@@ -502,6 +502,14 @@ async function loadSiteSettings() {
     if (s.instagram) {
       setHref('instagramFooter', s.instagram);
     }
+
+    // Services
+    setText('s1Title', s.s1_title); setText('s1Desc', s.s1_desc);
+    setText('s1F1', s.s1_f1); setText('s1F2', s.s1_f2); setText('s1F3', s.s1_f3);
+    setText('s2Title', s.s2_title); setText('s2Desc', s.s2_desc);
+    setText('s2F1', s.s2_f1); setText('s2F2', s.s2_f2); setText('s2F3', s.s2_f3);
+    setText('s3Title', s.s3_title); setText('s3Desc', s.s3_desc);
+    setText('s3F1', s.s3_f1); setText('s3F2', s.s3_f2); setText('s3F3', s.s3_f3);
   } catch (error) {
     console.error('Erreur chargement paramètres:', error);
   }
