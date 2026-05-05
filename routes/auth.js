@@ -14,7 +14,7 @@ router.post('/login', (req, res) => {
   }
 
   const db = getDB();
-  db.get('SELECT * FROM admin_users WHERE email = ?', [email], (err, user) => {
+  db.get('SELECT * FROM admin_users WHERE LOWER(email) = LOWER(?)', [email], (err, user) => {
     if (err) {
       return res.status(500).json({ error: 'Erreur serveur' });
     }
